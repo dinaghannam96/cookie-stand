@@ -1,5 +1,9 @@
 "use strict";
 let sales= document.getElementById("sales")
+let sales_header= document.getElementById("t_header")
+
+let total_table= document.getElementById("total")
+
 let hoursOfWork= ["6am", "7am", "8am", "9am", "10am", "11am", "12am", "1pm", "2pm", "3pm", "4pm", "5pm", "6pm", "7pm"]
     let array2= [0,0,0,0,0,0,0,0,0,0,0,0,0,0];
     let totalOftotal= 0
@@ -27,11 +31,11 @@ function Locations(location, min, max,Avg){
 
 }
 this.render= function(){
-
+// <tr> <td></td> </tr>  
       let tr=document.createElement("tr")
       let td=document.createElement("td")
       tr.appendChild(td)
-      sales.appendChild(tr) 
+      sales.prepend(tr) 
       td.textContent= this.location
       for (var i=0; i<this.CookiesPerHour.length;i++){
           let td3=document.createElement("td")
@@ -46,65 +50,51 @@ this.render= function(){
 }
 
 function sales2 (){
-    let tr = document.createElement('tr')
-    sales.appendChild(tr)
-    let td2=document.createElement("td")
-    tr.appendChild(td2)
+    let td = document.createElement('th')
+    td.textContent= "City"
+    sales_header.append(td)
     
    
     for (let i=0; i<hoursOfWork.length;i++){
         let td= document.createElement("td")
-        tr.appendChild(td)
+        sales_header.appendChild(td)
         td.textContent = hoursOfWork[i]
 
     }
     let td4=document.createElement("td")
-      tr.appendChild(td4)
+      sales_header.appendChild(td4)
       td4.textContent= "total for each location"
 
 
 }
-sales2()
+sales2() // 
 function sofa (){
-    let tr=document.createElement("tr")
+    total_table.innerHTML = "";
     let td4=document.createElement("td")
-    sales.appendChild(tr)
-    tr.appendChild(td4)
+    total_table.appendChild(td4)
     td4.textContent= "total"
     for (let i=0; i<array2.length;i++){
     let td5= document.createElement("td")
-    tr.appendChild(td5)
+    total_table.appendChild(td5)
     td5.textContent = array2[i]
     totalOftotal+= array2[i]
     }
     let td6=document.createElement("td")
-    tr.appendChild(td6)
+    total_table.appendChild(td6)
     td6.textContent= totalOftotal
-
-
 }
-var item= new Locations ("Seattle", 23, 65, 6.3);
-item.numberOfCookies()
-item.render()
 
+    
 
-
-var item2= new Locations ("Tokyo", 3, 24, 1.2);
-item2.numberOfCookies()
-item2.render()
-
-
-var item3= new Locations ("Paris", 20, 38, 2.3);
-item3.numberOfCookies()
-item3.render()
-
-var item4= new Locations ("Dubai", 11, 38, 3.7);
-item4.numberOfCookies()
-item4.render()
-
-
-var item5= new Locations ("Lima", 2, 16, 4.6);
-item5.numberOfCookies()
-item5.render()
-    sofa ()
+    function addItem() {
+  var city = document.getElementById('city').value; 
+  var min = document.getElementById('min').value; 
+  var max = document.getElementById('max').value; 
+  var avg = document.getElementById('avg').value; 
+  var add = new Locations (city,min,max,avg);
+   add.numberOfCookies() 
+   add.render()
+   sofa()
+   alert("New record Inserted successfuly")
+} 
 
