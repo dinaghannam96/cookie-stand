@@ -10,10 +10,36 @@
 </head>
 
 
-<body id="main">
+<body
+ id="main">
+ <fieldset id="formForCookies">
+<legend> Cookies Sales </legend>
+ <label for="YourCity" >Your City</label>
+ <input type="text" name="YourCity" id="city">
+ <br> 
+ <label for="MinimumCookies" >Minimum Cookies</label>
+<input type="number" name="MinimumCookies" id="min">
+<br>
+<label for="MaximumCookies" >MaximumCookies</label>
+<input type="number" name="MaximumCookies" id="max">
+<br>
+<label for="Average" >Average</label>
+ <input type="number" name="Average" id="avg" >
+ <br>
+ <button type="button" onclick="addItem();" name="submit" > Submit </button> 
+ <button type="button" onclick="sofa();" name="submit" > Total </button> 
+
+
+ </fieldset>
      
-<table id="sales">  
+<table>
+    <thead id="t_header"></thead>
+<tbody id="sales"> </tbody>
+    <!-- <tr> <td></td> </tr> -->
+    <tfoot id="total"> </tfoot>
 </table>
+
+
  <script src="app.js"></script>   
 </body>
 

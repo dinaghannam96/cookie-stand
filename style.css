@@ -21,3 +21,7 @@ table{
 td{
     border: 2px black solid;
 }
+fieldset {width: 100%;}
+input  , label {
+    width:50%; 
+} 
